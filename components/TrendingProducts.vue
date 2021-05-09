@@ -1,27 +1,20 @@
 <template>
 <div class="mb-15">
-<h2 class="mt-5 primary white--text pa-1 mb-2 text-center ">Related Products</h2>  
+<h2 class="mt-5 primary white--text pa-1 mb-2 text-center ">Trending Products</h2>  
 <v-row>
-<v-col v-for="(item , i) in items" :key="i" cols="4">
+<v-col v-for="(item , i) in items" :key="i" cols="12" xs="12" sm="4" xl="4">
 
-<v-hover   v-slot="{ hover }">
-<v-card 
-:to="`/products/${item.id}`"
-color="grey lighten-4"
-max-width="350"
->
-<v-img
-:aspect-ratio="16/9"
-:src="item.img"
->
-<v-expand-transition>
-<div
-v-if="hover"
-class="d-flex transition-fast-in-fast-out primary darken-2 v-card--reveal display-2 white--text"
-style="height: 100%;"
->
-Rs. {{item.price}}
-</div>
+<v-hover v-slot="{ hover }">
+<v-card :to="`/products/${item.id}`" color="grey lighten-4">
+    <v-img :aspect-ratio="16/9" :src="item.img">
+    <v-expand-transition>
+    <div
+    v-if="hover"
+    class="d-flex transition-fast-in-fast-out primary darken-2 v-card--reveal display-2 white--text"
+    style="height: 100%;"
+    >
+    Rs. {{item.price}}
+    </div>
 </v-expand-transition>
 </v-img>
 <v-card-text>

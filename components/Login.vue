@@ -12,9 +12,9 @@
     </v-form>
     <v-container>
         <v-row>
-            <a href="forgot_password">Forgot Password</a>
+            <a href="/forgot_password">Forgot Password</a>
             <v-spacer></v-spacer>            
-            <a href="register">New Customer? Click here</a>
+            <a href="/register">New Customer? Click here</a>
            </v-row>
 
     </v-container>

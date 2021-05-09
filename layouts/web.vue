@@ -3,15 +3,41 @@
 
 <!-- <v-img :src="topImg"  alt="" /> -->
 
+ <v-navigation-drawer
+      class="hidden-sm-and-up"        
+      v-model="drawer"
+      :clipped="clipped"
+      fixed
+    >
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in menus"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" />
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
 <v-app-bar app class="white">
-    <h1>Multi Vendor Platform</h1>
+    <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+
+    <h3>Multi Vendor Platform</h3>
     
 <!-- <span style="width:175px;" class="ma-5" dark>
   <v-img :src="logo"  alt="" />
 </span> -->
-
 <v-spacer></v-spacer>
-<span v-for="(m,i) in menus" :key="i" class="mt-2 ml-3" >
+
+<span v-for="(m,i) in menus" :key="i" class="hidden-sm-and-down mt-2 ml-3" >
      
      <a :href="m.to" style="text-decoration:none;">
 
@@ -33,21 +59,19 @@
 </template>
 </v-breadcrumbs> -->
   
-  <nuxt />
+<nuxt class="overflow-hidden" />
 </v-main>
- <v-row class="mt-2 text-center" >
-    <v-col class="primary">
-      <h3 class="white--text">Bolster</h3>
-      <p class="white--text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam in beatae saepe quis sapiente voluptate facere laboriosam maxime aliquam eum voluptatum voluptatem nulla ex, assumenda qui ducimus aliquid molestias accusantium?</p>
-    </v-col>
-    <v-col class="primary">
+<v-footer padless>
+  <!-- <v-row class=" pa-3 text-left">
+    
+    <v-col class="primary" cols="12" md="4" sm="12" xs="12">
       <h3 class="white--text">Quick Links</h3>    
       <p class="white--text" v-for="(m,i) in menus" :key="i">
        <a :href="m.to" class="white--text">{{m.title}}</a>
       </p>
       </v-col>
 
-       <v-col class="primary">
+       <v-col class="primary" cols="12" md="4" sm="12" xs="12">
       <h3 class="white--text">Contact</h3>    
       <p class="white--text">
        Address: <a class="white--text">abc location</a>
@@ -59,43 +83,25 @@
        Call us or Whatsapp: <a class="white--text">03108559858</a>
       </p>
       </v-col>
+      <v-col class="primary" cols="12" md="4" sm="12" xs="12">
+      <h3 class="white--text">Bolster</h3>
+      <p class="white--text">abc</p>
+    </v-col>
+   
+  </v-row> -->
 
+
+</v-footer>
+<v-footer  :fixed="fixed" app dark >
+  <v-row class="text-center">
+    <v-col>
+      <span class="text-center">&copy; {{ new Date().getFullYear() }} — <strong>Multi Vender Platform</strong></span>
+    </v-col>
   </v-row>
-  <v-divider></v-divider>
-<v-footer padless>
- 
- 
-    <v-card
-      class="flex primary"
-      flat
-      tile
-    >
+  <div >
 
-    <!-- <v-card-title>
-      <strong sm="12" xs="12" md="6" xl="6" class="subheading white--text">Get connected with us on social networks!</strong>
-        <v-spacer></v-spacer>
-
-        <v-btn
-          v-for="icon in SocialIcons"
-          :key="icon"
-          class="mx-4"
-          dark
-          icon
-        >
-          <v-icon  sm="12" xs="12" md="6" xl="6"  size="24px">
-            {{ icon }}
-          </v-icon>
-        </v-btn>
-      </v-card-title> -->
-
-      <v-card-text class="py-2 white--text text-center">
-        {{ new Date().getFullYear() }} — <strong>Multi Vender Platform</strong>
-      </v-card-text>
-    </v-card>
-  </v-footer>
-<!-- <v-footer :fixed="fixed" app dark>
-<span>&copy; {{year}}</span> 
-</v-footer> -->
+  </div>
+</v-footer>
 </v-app>
 </template>
 
@@ -104,6 +110,7 @@ export default {
 
 data () {
 return {
+  drawer: false,
   logo : 'https://logoipsum.com/logo/logo-12.svg',
   topImg : 'https://icms-image.slatic.net/images/ims-web/106b4acd-9996-4a59-918d-1eaa51708627.jpg',
   SocialIcons: [
@@ -116,12 +123,8 @@ return {
 year: new Date().getFullYear(),
 clipped: false,
 fixed:false,
-drawer: true,
 menus : [],      
 
-miniVariant: false,
-right: true,
-rightDrawer: false,
 title: 'Multi Vendor App',
 logout_btn:{
 icon:'mdi-logout',
