@@ -100,7 +100,7 @@
   </div>
 </v-footer>
 
-<v-footer :fixed="fixed" app dark >
+<v-footer class="hidden-md-and-up" :fixed="fixed" app dark >
   <v-row class="text-center">
     <v-col>
       <a href="/">
