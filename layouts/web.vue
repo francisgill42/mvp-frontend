@@ -53,11 +53,7 @@
 </span>
 </v-app-bar>
 <v-main>
-<!-- <v-breadcrumbs :items="menus" class="primary">
-<template v-slot:divider>
-<v-icon>mdi-chevron-right</v-icon>
-</template>
-</v-breadcrumbs> -->
+
   
 <nuxt class="overflow-hidden" />
 </v-main>
@@ -92,7 +88,8 @@
 
 
 </v-footer>
-<v-footer  :fixed="fixed" app dark >
+
+<v-footer class="hidden-md-and-down" :fixed="fixed" app dark >
   <v-row class="text-center">
     <v-col>
       <span class="text-center">&copy; {{ new Date().getFullYear() }} — <strong>Multi Vender Platform</strong></span>
@@ -102,6 +99,53 @@
 
   </div>
 </v-footer>
+
+<v-footer :fixed="fixed" app dark >
+  <v-row class="text-center">
+    <v-col>
+      <a href="/">
+       <v-icon>mdi-home</v-icon>
+      </a>
+    </v-col>
+    <v-col>
+      <a href="/cart">
+       
+        <v-badge
+        dense
+          color="info"
+          :content="TotalCartItems"
+        >
+         <v-icon>mdi-cart</v-icon>
+        </v-badge>
+      
+      </a>
+
+    </v-col>
+    <v-col>
+
+       <a href="/message">
+        <v-badge
+          color="info"
+          :content="MessageCount"
+        >
+         <v-icon>mdi-message</v-icon>
+        </v-badge>
+      </a>
+      
+    
+    </v-col>
+    <v-col>
+        <a href="/account">
+       <v-icon>mdi-account</v-icon>
+      </a>
+    </v-col>
+  </v-row>
+  <div >
+
+  </div>
+</v-footer>
+
+
 </v-app>
 </template>
 
@@ -119,7 +163,7 @@ return {
         'mdi-linkedin',
         'mdi-instagram',
       ],
-
+MessageCount : 9,
 year: new Date().getFullYear(),
 clipped: false,
 fixed:false,
@@ -135,7 +179,7 @@ label:'Logout'
 
 computed : {
     TotalCartItems () {
-      return this.$store.state.CartItem
+      return this.$store.state.CartItem = 1
     }
 
 },
