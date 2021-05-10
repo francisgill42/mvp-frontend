@@ -14,9 +14,9 @@
     </v-form>
     <v-container>
         <v-row>
-            <a href="login">Already registerd?Click here to login</a>
+            <a href="/login">Already registerd?Click here to login</a>
             <v-spacer></v-spacer>            
-            <a href="register">New Customer? Click here</a>
+            <a href="/register">New Customer? Click here</a>
            </v-row>
 
     </v-container>
