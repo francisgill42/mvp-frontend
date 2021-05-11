@@ -20,7 +20,6 @@
      <v-navigation-drawer
       class="hidden-sm-and-up"        
       v-model="drawer"
-      :clipped="clipped"
       fixed
     >
         <v-container>
@@ -53,7 +52,7 @@
     
         <v-row class="mt-5"> 
             <v-col cols="12" class="hidden-md-and-up">
-              <v-btn v-model="drawer" :right="right" @click.stop="drawer = !drawer" width="100%" class="primary">
+              <v-btn v-model="drawer" @click.stop="drawer = !drawer" width="100%" class="primary">
                  <v-icon>mdi-filter</v-icon> Click me to apply Filters
               </v-btn>
             </v-col>
@@ -85,8 +84,6 @@
 
         <v-col md="10" cols="12">
           <LattestProducts />
-          
-          <RelatedProducts />
           
           <TrendingProducts />
           

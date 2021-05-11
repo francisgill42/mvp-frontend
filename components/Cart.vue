@@ -1,76 +1,105 @@
 <template>
-    <div>
+<div class="mb-5">
+<h2 class=" primary white--text pa-1 mb-2 text-center ">Total Items</h2>  
+<v-row>
+<v-col v-for="(item , i) in items" :key="i" cols="12" xs="12" sm="4" xl="4">
 
-        <v-span>
-            <h2> Cart</h2>
-        </v-span>
-        <v-row class="mt-2 primary white--text">
-            <v-col>
-                Product Image
-            </v-col>
-             <v-col>
-                Product Name
-            </v-col>
-             <v-col>
-               Unit Price
-            </v-col>
-             <v-col>
-                Qty
-            </v-col>
-        </v-row>
-            <v-row style="border-bottom:1px grey solid;">
-                <v-col> Value </v-col>
-                <v-col> Value </v-col>
-                <v-col> Value </v-col>
-                <v-col> Value </v-col>
-            </v-row>
-            <v-row style="border-bottom:1px grey solid;">
-                <v-col> Value </v-col>
-                <v-col> Value </v-col>
-                <v-col> Value </v-col>
-                <v-col> Value </v-col>
-            </v-row>
-            <v-row style="border-bottom:1px grey solid;">
-                <v-col> Value </v-col>
-                <v-col> Value </v-col>
-                <v-col> Value </v-col>
-                <v-col> Value </v-col>
-            </v-row>   
-            <v-row> 
-                <v-col>
-                    <v-btn>Continue to shopping</v-btn>
-                </v-col>
-                <v-col>
-                  
-                    <v-card class="">
-                        <v-toolbar class="primary" flat>
-                        <h3 class="white--text">Cart Total</h3>
-                        </v-toolbar>
-                        <br>
-                          <v-card-text>
-                        <v-row class="pa-2">
-                        <v-col>Subtotal</v-col>
-                        <v-col>Shipping</v-col>
-                        </v-row>
-                        <v-divider></v-divider>
-                        
-                        <v-row class="pa-2">
-                        <v-col>Total</v-col>
-                        <v-col>Total</v-col>
-                        </v-row>
+<v-hover v-slot="{ hover }">
+<v-card :to="`/products/${item.id}`" color="grey lighten-4">
+    <v-img :aspect-ratio="16/9" :src="item.img">
+    <v-expand-transition>
+    <div
+    v-if="hover"
+    class="d-flex transition-fast-in-fast-out primary darken-2 v-card--reveal display-2 white--text"
+    style="height: 100%;"
+    >
+    Rs. {{item.price}}
+    </div>
+</v-expand-transition>
+</v-img>
+<v-card-text>
 
-                         <v-row class="pa-2">
-                        <v-col>
-                            <v-btn class="primary">Proceed to checkout</v-btn>
-                        </v-col>
-                        </v-row>
-                          </v-card-text>
-                     
+<div class="font-weight-light grey--text title mb-1">
+{{item.item}} x 5
+</div>
+<p class="font-weight-light primary--text mb-2">
+Rs. {{item.price}}
+</p>
+<!-- <div class="font-weight-light title mb-2">
+{{item.description}}
+</div> -->
+</v-card-text>
+</v-card>
+</v-hover>
+</v-col>
+</v-row>
 
+<v-row>
+    <v-col cols="12">
+        <v-btn width="100%" class="primary" small  dark>Proceed to checkout</v-btn>
+    </v-col>
+    
+    <v-col cols="12">
+        <v-btn class="primary" width="100%"   @click="addItemToCart" small dark>back to shopping</v-btn>
+    </v-col>
 
-                    </v-card>
-                </v-col>
-            </v-row>
+</v-row>
 
 </div>
 </template>
+
+
+<script>
+export default {
+data : ()  => ({
+CartItem : 0,
+
+items : [
+{
+id : 1,
+item : 'item name 1',
+description : 'desc',
+img:"/s1.jpg",
+price : 500,
+discount : 0,
+
+},
+{
+id : 2,
+item : 'item name 2',
+description : 'desc',
+img:"/s2.jpg",
+price : 400,
+discount : 0,
+},
+{
+id : 3,
+item : 'item name 3',
+description : 'desc',
+img:"/s3.jpg",
+price : 300,
+discount : 0,
+}
+]
+}),
+methods : {
+addItemToCart(){
+this.CartItem++
+this.$store.commit('addCartToItem',this.CartItem)
+
+
+}
+}
+}
+</script>
+
+<style>
+.v-card--reveal {
+align-items: center;
+bottom: 0;
+justify-content: center;
+opacity: .5;
+position: absolute;
+width: 100%;
+}
+</style>

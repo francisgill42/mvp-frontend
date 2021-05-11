@@ -87,8 +87,6 @@
         <v-col md="10" cols="12">
           <LattestProducts />
           
-          <RelatedProducts />
-          
           <TrendingProducts />
           
           <BestSellerProducts />

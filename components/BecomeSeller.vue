@@ -2,7 +2,7 @@
 <div>
     <v-form>
         <div class="display-1 text-center">
-        Create an Account
+            Become Seller
         </div>
         <v-text-field v-model="full_name" :label="`Full Name`" />
         <v-text-field v-model="email" :label="`Email`" />
@@ -14,7 +14,7 @@
     <v-container  class="mt-3">
         <v-row>
             
-        <a href="login">Already registerd?Click here to login</a>
+        <a href="/seller/login">Already registerd?Click here to login</a>
         </v-row>
 
     </v-container>

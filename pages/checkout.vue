@@ -1,20 +1,7 @@
 <template>
-<div class="">
-
-    <v-container>
-        <v-row class="mt-5"> 
-
-        <v-col>
-          <Checkout />
-        </v-col> 
-
-       
-        </v-row>
-
-      
-  </v-container>
-</div>
-
+ <v-container>
+   <Checkout class="mt-5" />
+ </v-container>
  
 </template>
 

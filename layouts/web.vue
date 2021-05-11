@@ -194,12 +194,15 @@ get_menus () {
 
   var menu = [
             { icon: 'mdi-home', title: 'Home',to: '/web' },
-            { icon: 'mdi-sale', title: 'Become Seller',to: '/become_seller' },
+            { icon: 'mdi-sale', title: 'Become Seller',to: '/seller/become_seller' },
+            { icon: 'mdi-sale', title: 'Seller Login',to: '/seller/login' },
             { icon: 'mdi-package', title: 'Products',to: '/products' },
             { icon: 'mdi-cart', title: 'Cart',to: '/cart' },
+            { icon: 'mdi-cart', title: 'Checkout',to: '/checkout' },
             
             { icon: 'mdi-login', title: 'Login',to: '/login' },
             { icon: 'mdi-account', title: 'Register',to: '/register' },
+
             
   ];
 
